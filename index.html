@@ -48,6 +48,78 @@
     .chat-send{width:40px;height:40px;border-radius:50%;border:none;background:#147a36;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
     .chat-send:disabled{opacity:.6;cursor:not-allowed}
   </style>
+
+  <meta property="og:title" content="Youth for East African Federation">
+  <meta property="og:description" content="Youth-led action for unity, empowerment, and regional development.">
+  <meta property="og:url" content="https://youthforeastafricanfederation.com/">
+  <meta property="og:image" content="https://youthforeastafricanfederation.com/assets/images/yef-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+<style id="yef-polish">
+
+/* === YEF minimal polish (non-destructive) === */
+:root{
+  --brand:#1363DF;
+  --ink:#0F172A;
+  --text:#334155;
+  --muted:#64748B;
+  --line:#E5E7EB;
+  --bg:#F8FAFC;
+  --card:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
+  line-height:1.65;
+}
+/* Center core sections without changing markup */
+header, main, section, footer{
+  max-width:1000px;
+  margin-left:auto; margin-right:auto;
+  padding-left:16px; padding-right:16px;
+}
+/* Sticky, subtle nav */
+header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line); backdrop-filter:saturate(180%) blur(6px)}
+
+/* Brand / nav link styling */
+header .brand{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--ink)}
+header .brand img{height:30px; width:auto}
+header nav a{font-weight:600; color:var(--ink); text-decoration:none; margin-left:16px}
+header nav a:hover{color:var(--brand)}
+
+/* Hero glow */
+.hero{
+  background:
+    radial-gradient(1200px 400px at 50% -120px, rgba(19,99,223,.10), transparent),
+    radial-gradient(600px 200px at 80% -140px, rgba(19,99,223,.08), transparent);
+}
+.hero h1{color:var(--ink)}
+.hero p{color:var(--muted)}
+
+/* Cards & sections */
+.card{
+  background:var(--card)!important;
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:0 1px 2px rgba(0,0,0,.03);
+}
+.cards{gap:16px}
+
+/* Buttons */
+a.button, button.button, .btn{
+  display:inline-block; background:var(--brand); color:#fff!important;
+  padding:12px 16px; border-radius:10px; font-weight:700; text-decoration:none; border:1px solid transparent;
+}
+a.button.secondary, .btn.secondary{background:#fff; color:var(--ink)!important; border-color:var(--line)}
+
+/* Footer */
+footer{border-top:1px solid var(--line); background:#fff; color:var(--muted)}
+
+/* Chat widget safety */
+#chatButton,.chat-button,.chat-panel{z-index:9999}
+
+</style>
 </head>
 <body>
   <header>
