@@ -74,3 +74,34 @@
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
+
+// Avatar toggle and safe fetch wrapper
+(function initYEFChatAvatar(){
+  const root = document.getElementById('chatWidgetRoot');
+  const avatar = document.getElementById('yefAvatar');
+  if (!root || !avatar) return;
+  document.addEventListener('click', (e) => {
+    if (!root.classList.contains('open')) return;
+    const within = root.contains(e.target) || avatar.contains(e.target);
+    if (!within) root.classList.remove('open');
+  });
+  avatar.addEventListener('click', () => {
+    root.classList.toggle('open');
+  });
+})();
+
+// Ensure we send messages to Netlify function
+async function yefSendToServer(messages){
+  const res = await fetch('/.netlify/functions/chat', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages })
+  });
+  const data = await res.json().catch(()=>({reply:'(error parsing server response)'}));
+  return data.reply || '…';
+}
+
+// If your existing code uses another sender, you can swap it here:
+if (typeof window !== 'undefined') {
+  window.yefSendToServer = yefSendToServer;
+}

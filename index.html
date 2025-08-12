@@ -84,7 +84,19 @@
     @media (max-width: 480px){
       .btn{padding:.7rem .9rem}
     }
-    /* Chat widget (kept as-is but placed after content) */
+    /* Chat widget + avatar */
+#yefAvatar{
+  position: fixed;
+  right: 18px; bottom: 18px;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: none; background:#fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  padding: 6px; cursor: pointer; z-index: 9999;
+}
+#yefAvatar img{ width:100%; height:100%; border-radius:50% }
+#chatWidgetRoot{ position: fixed; right: 18px; bottom: 96px; width: min(420px,92vw); max-height: 70vh; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.25); display: none; z-index: 9998; }
+#chatWidgetRoot.open{ display: block }
   </style>
 </head>
 <body>
@@ -108,28 +120,14 @@
     <div class="hero-wrap">
       <div>
         <span class="tag">New youth movement launching 2025</span>
-        <h1>Together for an East African Future</h1>
-        <p class="subtitle">We will build a youth-powered movement that advances unity, mobility, and shared prosperity across East Africa.</p>
+        <h1>Why an East African Federation?</h1>
+        <p class="subtitle">Learn the case for deeper regional integration — mobility, markets, and shared prosperity — and how youth can drive it.</p>
         <div class="cta">
           <a class="btn" href="#involved">Become a Founding Member</a>
           <a class="btn" style="background:var(--orange)" href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">Follow us on TikTok</a>
         </div>
       </div>
-      <div class="hero-card">
-        <h3 style="margin-bottom:.5rem">2025 Launch Timeline</h3>
-        <div class="timeline" style="grid-template-columns:repeat(2,1fr)">
-          <div class="step"><b>Q1</b><br/>We will build the founding team in Kampala.</div>
-          <div class="step"><b>Q2</b><br/>We will launch the first chapter with an inaugural event.</div>
-          <div class="step"><b>Q3</b><br/>We will begin recruitment in Nairobi and across EAC universities.</div>
-          <div class="step"><b>Q4</b><br/>We will host our first cross‑border virtual summit.</div>
-        </div>
-        <div class="countdown" style="margin-top:1rem">
-          <div class="kpi"><b>2025</b>Launch Year</div>
-          <div class="kpi"><b>Founders</b>Early members help shape priorities</div>
-        </div>
-      </div>
-    </div>
-  </section>
+      </div></section>
 
   <!-- WHY -->
   <section id="why">
@@ -180,42 +178,61 @@
     </div>
   </section>
 
-  <!-- GET INVOLVED -->
-  <section id="involved">
-    <h2 class="section-title">Get Involved</h2>
+  
+  <!-- WHY (kept) -->
+
+  <!-- WHAT WE'RE PUSHING FOR -->
+  <section id="push">
+    <h2 class="section-title">What We’re Advocating For</h2>
+    <div class="cards">
+      <div class="card"><h3>Free(er) Mobility</h3><p class="muted">Simpler movement for study, work, and entrepreneurship across the region.</p></div>
+      <div class="card"><h3>Common Market</h3><p class="muted">Reduced friction for youth-led businesses to sell across borders.</p></div>
+      <div class="card"><h3>Youth Voice in Policy</h3><p class="muted">Constructive, evidence-based input into integration policies that affect young people.</p></div>
+    </div>
+  </section>
+
+  <!-- HOW TO ENGAGE -->
+  <section id="engage">
+    <h2 class="section-title">How to Engage</h2>
     <div class="grid">
       <div class="card">
-        <h3>Join the Founding List</h3>
-        <p class="muted">Be among the first to be updated about chapter launches and events.</p>
-        <form name="founders" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="founders">
-          <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
-          <button class="btn" type="submit">Join</button>
-        </form>
-      </div>
-      <div class="card">
-        <h3>Volunteer in 2025</h3>
-        <p class="muted">We will open structured roles when programs are live. Share what you’d like to help with.</p>
-        <form name="volunteer" method="POST" data-netlify="true">
-          <input type="hidden" name="form-name" value="volunteer">
-          <input type="text" name="name" placeholder="Your name" aria-label="Name">
-          <textarea name="message" placeholder="How would you like to contribute?"></textarea>
-          <button class="btn" type="submit">Share</button>
-        </form>
-      </div>
-      <div class="card">
-        <h3>Follow Our Updates</h3>
-        <p class="muted">We will post behind-the-scenes progress and calls to action.</p>
+        <h3>Learn & Share</h3>
+        <p class="muted">Use our explainers to educate friends and peers. Start conversations on campus and online.</p>
         <div class="socials" style="margin-top:.5rem">
-          <a href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">
-            <span>🎵 TikTok</span>
-          </a>
+          <a href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">🎵 TikTok</a>
         </div>
+      </div>
+      <div class="card">
+        <h3>Suggest Ideas</h3>
+        <p class="muted">Tell us what resources or events would help you make the case for federation.</p>
+        <form action="https://formspree.io/f/YOURENGAGEID" method="POST">
+          <input type="text" name="name" placeholder="Your name">
+          <input type="email" name="email" placeholder="Email" required>
+          <textarea name="message" placeholder="Your suggestion"></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <p class="muted" style="margin-top:.5rem;font-size:.9rem">Replace <code>YOURENGAGEID</code> with your Formspree form ID.</p>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Say Hello</h3>
+        <form action="https://formspree.io/f/YOURCONTACTID" method="POST">
+          <input type="text" name="name" placeholder="Your name">
+          <input type="email" name="email" placeholder="Email" required>
+          <textarea name="message" placeholder="Your message"></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <p class="muted" style="margin-top:.5rem;font-size:.9rem">Replace <code>YOURCONTACTID</code> with your Formspree form ID.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <h2 class="section-title">Contact</h2>
     <div class="grid">
@@ -242,7 +259,12 @@
     </div>
   </footer>
 
-  <!-- Existing Chatbot (kept) -->
+  <!-- Avatar trigger -->
+<button id="yefAvatar" aria-label="Open YEF chat">
+  <img src="assets/images/yef-logo.png" alt="YEF chat avatar">
+</button>
+
+<!-- Existing Chatbot (kept) -->
   <div id="chatWidgetRoot"></div>
   <script src="assets/js/chat.js"></script>
   <script>
