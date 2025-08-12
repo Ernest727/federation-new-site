@@ -3,177 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Youth for East African Federation</title>
+  <title>Youth for East African Federation – Launching 2025</title>
+  <meta name="description" content="Youth for East African Federation (YEF) is a new youth movement launching in 2025. Be a founding member and help build unity, mobility, and shared prosperity across East Africa."/>
   <link rel="icon" href="assets/images/yef-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --green:#2E7D32;
+      --blue:#1976D2;
+      --orange:#FF8F00;
+      --ink:#1c2430;
+      --muted:#5b6672;
+      --bg:#f7faf8;
+      --card:#ffffff;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;color:#223}
-    header{background:linear-gradient(135deg,#0c6027,#147a36);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px rgba(0,0,0,.1)}
-    nav{max-width:1100px;margin:0 auto;padding:.6rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700}
-    .brand img{width:36px;height:36px;border-radius:6px;object-fit:cover}
-    .brand .name{font-size:1.05rem;letter-spacing:.2px}
-    nav ul{list-style:none;display:flex;gap:1rem}
-    nav a{color:#fff;text-decoration:none;opacity:.95}
-    nav a:hover{text-decoration:underline;opacity:1}
-    .hero{background:linear-gradient(rgba(20,122,54,.92), rgba(12,96,39,.92));color:#fff;text-align:center;padding:4rem 1rem}
-    .hero h1{font-size:2.6rem;margin-bottom:.5rem}
-    .hero p{max-width:700px;margin:0 auto 1rem;opacity:.95}
-    section{padding:3rem 1rem;max-width:1100px;margin:0 auto}
-    .section-title{font-size:2rem;color:#0c6027;text-align:center;margin-bottom:1.2rem}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
-    .card{background:#fff;padding:1.2rem;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.08)}
-    footer{background:#0c6027;color:#fff;text-align:center;padding:1.2rem;margin-top:2rem}
-    /* Chat */
-    .chat-button{position:fixed;bottom:20px;right:20px;width:58px;height:58px;background:linear-gradient(135deg,#147a36,#0c6027);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.25);border:none;z-index:1000}
-    .chat-button svg{width:28px;height:28px;fill:#fff}
-    .chat-panel{position:fixed;bottom:88px;right:20px;width:360px;max-width:92vw;height:520px;background:#fff;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.22);display:none;flex-direction:column;overflow:hidden;z-index:999}
-    .chat-panel.active{display:flex}
-    .chat-header{background:linear-gradient(135deg,#0c6027,#147a36);color:#fff;padding:.8rem 1rem;display:flex;align-items:center;justify-content:space-between}
-    .chat-close{background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
-    .chat-messages{flex:1;overflow-y:auto;padding:1rem;background:#f7faf7}
-    .message{margin-bottom:.8rem;display:flex}
-    .message.user{justify-content:flex-end}
-    .message .message-content{max-width:75%;padding:.7rem .9rem;border-radius:12px;font-size:.95rem}
-    .message.assistant .message-content{background:#fff;border:1px solid #e6efe6}
-    .message.user .message-content{background:#147a36;color:#fff}
-    .typing-indicator{display:none;margin:.3rem 0}
-    .typing-indicator.active{display:inline-block;background:#fff;border:1px solid #e6efe6;padding:.5rem .7rem;border-radius:10px}
-    .typing-indicator span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#94a694;margin:0 2px;animation:ti 1.4s infinite}
-    .typing-indicator span:nth-child(2){animation-delay:.2s}.typing-indicator span:nth-child(3){animation-delay:.4s}
-    @keyframes ti{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-8px)}}
-    .chat-input-container{display:flex;gap:.5rem;padding:.8rem;border-top:1px solid #e6efe6;background:#fff}
-    .chat-input{flex:1;border:1px solid #d7e2d7;border-radius:22px;padding:.6rem .9rem;font-size:1rem;outline:none}
-    .chat-input:focus{border-color:#147a36}
-    .chat-send{width:40px;height:40px;border-radius:50%;border:none;background:#147a36;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
-    .chat-send:disabled{opacity:.6;cursor:not-allowed}
+    html,body{height:100%}
+    body{font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    /* Header / Nav */
+    header{position:sticky;top:0;background:#0f5a26;background:linear-gradient(135deg,#0f5a26,var(--green));color:#fff;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.12)}
+    nav{max-width:1120px;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .brand img{width:40px;height:40px;border-radius:8px}
+    .brand .name{font-weight:800;letter-spacing:.2px}
+    .nav-links{display:flex;gap:1rem;align-items:center}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1rem;border-radius:999px;background:var(--blue);color:#fff;font-weight:600;border:none;cursor:pointer;box-shadow:var(--shadow)}
+    .btn:hover{filter:brightness(.95)}
+    .btn-outline{background:transparent;border:2px solid #fff}
+    /* Hero */
+    .hero{isolation:isolate;background:
+      radial-gradient(1200px 400px at 80% -200px, rgba(255,143,0,.15), transparent 60%),
+      radial-gradient(1200px 400px at -10% -200px, rgba(25,118,210,.12), transparent 60%),
+      linear-gradient(135deg,#0f5a26,var(--green));
+      color:#fff;
+    }
+    .hero-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;align-items:center;padding:3.5rem 1rem}
+    .hero h1{font-size:clamp(2rem,3.6vw,3rem);line-height:1.15;margin-bottom:.75rem;font-weight:800}
+    .subtitle{color:#e7ffee;margin-bottom:1rem}
+    .tag{display:inline-block;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);padding:.35rem .7rem;border-radius:999px;margin-bottom:.75rem;font-weight:600}
+    .cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+    .hero-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+    .countdown{display:flex;gap:1rem;justify-content:space-between}
+    .kpi{flex:1;text-align:center;border-radius:12px;padding:.75rem;background:#f3f7f3}
+    .kpi b{display:block;font-size:1.4rem}
+    /* Sections */
+    section{max-width:1120px;margin:0 auto;padding:2.5rem 1rem}
+    .section-title{font-size:1.6rem;margin-bottom:1rem}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:1rem}
+    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .card{background:var(--card);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+    .card h3{font-size:1.1rem;margin-bottom:.5rem}
+    .timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+    .step{background:#fff;border-left:6px solid var(--orange);border-radius:12px;padding:1rem;box-shadow:var(--shadow)}
+    /* Get Involved */
+    .list{display:grid;gap:.5rem;margin-top:.5rem}
+    .icon{font-size:1.1rem;margin-right:.4rem}
+    /* Footer */
+    footer{background:#0f5a26;color:#cfe8d1;margin-top:2rem}
+    .foot{max-width:1120px;margin:0 auto;padding:1.5rem 1rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center}
+    .socials{display:flex;gap:.75rem;align-items:center}
+    .socials a{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .7rem;border-radius:999px;background:rgba(255,255,255,.1);color:#fff}
+    /* Forms */
+    form{display:grid;grid-template-columns:1fr auto;gap:.6rem}
+    input[type="email"],input[type="text"],textarea{width:100%;padding:.8rem;border-radius:10px;border:1px solid #d3dbe3;font:inherit}
+    textarea{min-height:110px;resize:vertical}
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-wrap{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .timeline{grid-template-columns:1fr; }
+    }
+    @media (max-width: 480px){
+      .btn{padding:.7rem .9rem}
+    }
+    /* Chat widget (kept as-is but placed after content) */
   </style>
-
-  <meta property="og:title" content="Youth for East African Federation">
-  <meta property="og:description" content="Youth-led action for unity, empowerment, and regional development.">
-  <meta property="og:url" content="https://youthforeastafricanfederation.com/">
-  <meta property="og:image" content="https://youthforeastafricanfederation.com/assets/images/yef-logo.png">
-  <meta name="twitter:card" content="summary_large_image">
-<style id="yef-polish">
-
-/* === YEF minimal polish (non-destructive) === */
-:root{
-  --brand:#1363DF;
-  --ink:#0F172A;
-  --text:#334155;
-  --muted:#64748B;
-  --line:#E5E7EB;
-  --bg:#F8FAFC;
-  --card:#FFFFFF;
-}
-html{scroll-behavior:smooth}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";
-  line-height:1.65;
-}
-/* Center core sections without changing markup */
-header, main, section, footer{
-  max-width:1000px;
-  margin-left:auto; margin-right:auto;
-  padding-left:16px; padding-right:16px;
-}
-/* Sticky, subtle nav */
-header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--line); backdrop-filter:saturate(180%) blur(6px)}
-
-/* Brand / nav link styling */
-header .brand{display:flex; align-items:center; gap:10px; font-weight:800; color:var(--ink)}
-header .brand img{height:30px; width:auto}
-header nav a{font-weight:600; color:var(--ink); text-decoration:none; margin-left:16px}
-header nav a:hover{color:var(--brand)}
-
-/* Hero glow */
-.hero{
-  background:
-    radial-gradient(1200px 400px at 50% -120px, rgba(19,99,223,.10), transparent),
-    radial-gradient(600px 200px at 80% -140px, rgba(19,99,223,.08), transparent);
-}
-.hero h1{color:var(--ink)}
-.hero p{color:var(--muted)}
-
-/* Cards & sections */
-.card{
-  background:var(--card)!important;
-  border:1px solid var(--line);
-  border-radius:12px;
-  box-shadow:0 1px 2px rgba(0,0,0,.03);
-}
-.cards{gap:16px}
-
-/* Buttons */
-a.button, button.button, .btn{
-  display:inline-block; background:var(--brand); color:#fff!important;
-  padding:12px 16px; border-radius:10px; font-weight:700; text-decoration:none; border:1px solid transparent;
-}
-a.button.secondary, .btn.secondary{background:#fff; color:var(--ink)!important; border-color:var(--line)}
-
-/* Footer */
-footer{border-top:1px solid var(--line); background:#fff; color:var(--muted)}
-
-/* Chat widget safety */
-#chatButton,.chat-button,.chat-panel{z-index:9999}
-
-</style>
 </head>
 <body>
   <header>
     <nav>
       <div class="brand">
-        <img src="assets/images/yef-logo.png" alt="YEF logo" onerror="this.style.display='none'">
+        <img src="assets/images/yef-logo.png" alt="YEF logo">
         <div class="name">Youth for East African Federation</div>
       </div>
-      <ul>
-        <li><a href="#mission">Mission</a></li>
-        <li><a href="#focus">Focus Areas</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div class="nav-links">
+        <a href="#why" style="color:#fff">Why Federation</a>
+        <a href="#plan" style="color:#fff">The Plan</a>
+        <a href="#involved" style="color:#fff">Get Involved</a>
+        <a href="#contact" class="btn btn-outline">Contact</a>
+      </div>
     </nav>
   </header>
 
+  <!-- HERO -->
   <section class="hero">
-    <h1>Together for an East African Future</h1>
-    <p>Youth-led action for unity, empowerment, and regional development.</p>
-    <p>YEF is a youth-led movement championing a united, prosperous East Africa.</p>
+    <div class="hero-wrap">
+      <div>
+        <span class="tag">New youth movement launching 2025</span>
+        <h1>Together for an East African Future</h1>
+        <p class="subtitle">We will build a youth-powered movement that advances unity, mobility, and shared prosperity across East Africa.</p>
+        <div class="cta">
+          <a class="btn" href="#involved">Become a Founding Member</a>
+          <a class="btn" style="background:var(--orange)" href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">Follow us on TikTok</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3 style="margin-bottom:.5rem">2025 Launch Timeline</h3>
+        <div class="timeline" style="grid-template-columns:repeat(2,1fr)">
+          <div class="step"><b>Q1</b><br/>We will build the founding team in Kampala.</div>
+          <div class="step"><b>Q2</b><br/>We will launch the first chapter with an inaugural event.</div>
+          <div class="step"><b>Q3</b><br/>We will begin recruitment in Nairobi and across EAC universities.</div>
+          <div class="step"><b>Q4</b><br/>We will host our first cross‑border virtual summit.</div>
+        </div>
+        <div class="countdown" style="margin-top:1rem">
+          <div class="kpi"><b>2025</b>Launch Year</div>
+          <div class="kpi"><b>Founders</b>Early members help shape priorities</div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="mission">
-    <h2 class="section-title">Our Vision & Mission</h2>
+  <!-- WHY -->
+  <section id="why">
+    <h2 class="section-title">Why East African Federation?</h2>
     <div class="cards">
-      <div class="card"><h3>Vision</h3><p>A vibrant East Africa where young people work across borders for shared prosperity, peace, and opportunity.</p></div>
-      <div class="card"><h3>Mission</h3><p>Equip and mobilize youth to build practical projects that show the value of a federated East Africa.</p></div>
+      <div class="card">
+        <h3>🌍 Mobility</h3>
+        <p class="muted">Easier movement for study, work, and entrepreneurship across member states.</p>
+      </div>
+      <div class="card">
+        <h3>🤝 Unity</h3>
+        <p class="muted">Stronger collective identity and collaboration beyond colonial borders.</p>
+      </div>
+      <div class="card">
+        <h3>📈 Opportunity</h3>
+        <p class="muted">Bigger markets, shared infrastructure, and youth-led innovation.</p>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:1rem">We will focus on practical, youth-led projects that demonstrate the benefits of deeper regional integration while acknowledging the real policy and coordination barriers that exist today.</p>
+  </section>
+
+  <!-- THE PLAN -->
+  <section id="plan">
+    <h2 class="section-title">Our Approach</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Programs</h3>
+        <ul class="list">
+          <li>• Starting Q2 2025: Monthly online discussions for members.</li>
+          <li>• City meetups and campus events to grow local chapters.</li>
+          <li>• Cross-border student & founder roundtables.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Advocacy</h3>
+        <ul class="list">
+          <li>• Storytelling and data-driven explainers about federation benefits.</li>
+          <li>• Partnerships with youth orgs and innovation hubs.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Build-in-Public</h3>
+        <ul class="list">
+          <li>• Share progress transparently and invite feedback.</li>
+          <li>• Pilot simple projects that reduce friction across borders.</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <footer><p>&copy; 2024 Youth for East African Federation.</p></footer>
-
-  <!-- Chat UI -->
-  <button class="chat-button" id="chatButton" aria-label="Open chat">
-    <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.48 2 12c0 1.54.36 3 .97 4.29L1 23l6.71-1.97C9 21.64 10.46 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/><path d="M7 11h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
-  </button>
-
-  <div class="chat-panel" id="chatPanel">
-    <div class="chat-header">
-      <h3>Chat with YEF</h3>
-      <button class="chat-close" id="chatClose" aria-label="Close chat">×</button>
+  <!-- GET INVOLVED -->
+  <section id="involved">
+    <h2 class="section-title">Get Involved</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Join the Founding List</h3>
+        <p class="muted">Be among the first to be updated about chapter launches and events.</p>
+        <form name="founders" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="founders">
+          <input type="email" name="email" placeholder="Your email" required aria-label="Email address">
+          <button class="btn" type="submit">Join</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Volunteer in 2025</h3>
+        <p class="muted">We will open structured roles when programs are live. Share what you’d like to help with.</p>
+        <form name="volunteer" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="volunteer">
+          <input type="text" name="name" placeholder="Your name" aria-label="Name">
+          <textarea name="message" placeholder="How would you like to contribute?"></textarea>
+          <button class="btn" type="submit">Share</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Follow Our Updates</h3>
+        <p class="muted">We will post behind-the-scenes progress and calls to action.</p>
+        <div class="socials" style="margin-top:.5rem">
+          <a href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">
+            <span>🎵 TikTok</span>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="chat-messages" id="chatMessages">
-      <div class="message assistant"><div class="message-content">Hello! Karibu. Tukusanyike. How can I help?</div></div>
-    </div>
-    <div class="typing-indicator" id="typingIndicator"><span></span><span></span><span></span></div>
-    <div class="chat-input-container">
-      <input type="text" class="chat-input" id="chatInput" placeholder="Type your message…" aria-label="Chat message input">
-      <button class="chat-send" id="chatSend" aria-label="Send">
-        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-  </div>
+  </section>
 
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Say Hello</h3>
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <input type="text" name="name" placeholder="Your name" aria-label="Name">
+          <input type="email" name="email" placeholder="Email" aria-label="Email">
+          <textarea name="message" placeholder="Your message"></textarea>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <p class="muted" style="margin-top:.75rem">Founded 2024. Launching 2025.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot">
+      <div>© <span id="y"></span> Youth for East African Federation — Be part of building this movement from day one.</div>
+      <div class="socials">
+        <a href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">🎵 TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Existing Chatbot (kept) -->
+  <div id="chatWidgetRoot"></div>
   <script src="assets/js/chat.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
