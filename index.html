@@ -1,279 +1,560 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Youth for East African Federation – Launching 2025</title>
-  <meta name="description" content="Youth for East African Federation (YEF) is a new youth movement launching in 2025. Be a founding member and help build unity, mobility, and shared prosperity across East Africa."/>
-  <link rel="icon" href="assets/images/yef-logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Youth for East African Federation - Unite. Inspire. Transform.</title>
+  <meta name="description" content="Join the movement for East African Federation. Together we're building a united, prosperous future for 300+ million East Africans.">
+  <meta property="og:title" content="Youth for East African Federation">
+  <meta property="og:description" content="Be a founding member of the movement uniting East African youth for regional integration.">
+  <meta property="og:image" content="https://youthforeastafricanfederation.com/assets/images/yef-og-image.png">
+  <meta property="og:url" content="https://youthforeastafricanfederation.com">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%232E7D32' width='100' height='100'/><text y='60' x='50' text-anchor='middle' font-size='60' fill='white'>Y</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --green:#2E7D32;
-      --blue:#1976D2;
-      --orange:#FF8F00;
-      --ink:#1c2430;
-      --muted:#5b6672;
-      --bg:#f7faf8;
-      --card:#ffffff;
-      --radius:16px;
-      --shadow:0 10px 30px rgba(16,24,40,.08);
+    :root {
+      --green: #2E7D32;
+      --green-dark: #1B5E20;
+      --green-light: #4CAF50;
+      --blue: #1976D2;
+      --orange: #FF8F00;
+      --red: #DC2626;
+      --yellow: #FFC107;
+      --ink: #0F172A;
+      --muted: #64748B;
+      --light: #94A3B8;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,0.12);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-    a{color:var(--blue);text-decoration:none}
-    a:hover{text-decoration:underline}
-    img{max-width:100%;display:block}
-    /* Header / Nav */
-    header{position:sticky;top:0;background:#0f5a26;background:linear-gradient(135deg,#0f5a26,var(--green));color:#fff;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.12)}
-    nav{max-width:1120px;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .brand{display:flex;align-items:center;gap:.75rem}
-    .brand img{width:40px;height:40px;border-radius:8px}
-    .brand .name{font-weight:800;letter-spacing:.2px}
-    .nav-links{display:flex;gap:1rem;align-items:center}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:.7rem 1rem;border-radius:999px;background:var(--blue);color:#fff;font-weight:600;border:none;cursor:pointer;box-shadow:var(--shadow)}
-    .btn:hover{filter:brightness(.95)}
-    .btn-outline{background:transparent;border:2px solid #fff}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.6; overflow-x: hidden;
+    }
+
+    /* Typography */
+    h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; font-weight: 900; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; font-weight: 800; }
+    h3 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.3; font-weight: 700; }
+    h4 { font-size: 1.25rem; font-weight: 600; }
+    .lead { font-size: 1.25rem; line-height: 1.8; color: var(--muted); }
+
+    /* Layout */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    section { padding: 4rem 0; scroll-margin-top: 90px; } /* offset for fixed header */
+
+    /* Navigation */
+    header {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      z-index: 1000; transition: all 0.3s ease;
+    }
+    header.scrolled { box-shadow: var(--shadow-lg); }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+    .brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--ink); }
+    .logo {
+      width: 48px; height: 48px; background: var(--green); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 1.5rem;
+    }
+    .brand-text { font-weight: 800; font-size: 1.1rem; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: var(--ink); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+    .nav-links a:hover { color: var(--green); }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 600; text-decoration: none;
+      transition: all 0.3s ease; border: none; cursor: pointer; font-size: 1rem;
+    }
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn-secondary { background: white; color: var(--green); border: 2px solid var(--green); }
+    .btn-secondary:hover { background: var(--green); color: white; }
+    .btn-large { padding: 1rem 2rem; font-size: 1.1rem; }
+
     /* Hero */
-    .hero{max-width:unset;margin:0;isolation:isolate;background:
-      radial-gradient(1200px 400px at 80% -200px, rgba(255,143,0,.15), transparent 60%),
-      radial-gradient(1200px 400px at -10% -200px, rgba(25,118,210,.12), transparent 60%),
-      linear-gradient(135deg,#0f5a26,var(--green));
-      color:#fff;
+    .hero {
+      padding-top: 8rem; padding-bottom: 4rem;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      color: white; position: relative; overflow: hidden;
     }
-    .hero-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:2rem;align-items:center;padding:3.5rem 1rem}
-    .hero h1{font-size:clamp(2rem,3.6vw,3rem);line-height:1.15;margin-bottom:.75rem;font-weight:800}
-    .subtitle{color:#e7ffee;margin-bottom:1rem}
-    .tag{display:inline-block;background:rgba(255,255,255,.12);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);padding:.35rem .7rem;border-radius:999px;margin-bottom:.75rem;font-weight:600}
-    .cta{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
-    .hero-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
-    .countdown{display:flex;gap:1rem;justify-content:space-between}
-    .kpi{flex:1;text-align:center;border-radius:12px;padding:.75rem;background:#f3f7f3}
-    .kpi b{display:block;font-size:1.4rem}
-    /* Sections */
-    section{max-width:1120px;margin:0 auto;padding:2.5rem 1rem}
-    .section-title{font-size:1.6rem;margin-bottom:1rem}
-    .muted{color:var(--muted)}
-    .grid{display:grid;gap:1rem}
-    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-    .card{background:var(--card);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
-    .card h3{font-size:1.1rem;margin-bottom:.5rem}
-    .timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
-    .step{background:#fff;border-left:6px solid var(--orange);border-radius:12px;padding:1rem;box-shadow:var(--shadow)}
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: center; }
+    .badge {
+      display: inline-block; background: rgba(255,255,255,0.2); padding: 0.5rem 1rem;
+      border-radius: 50px; font-weight: 600; margin-bottom: 1rem; backdrop-filter: blur(10px);
+    }
+    .hero h1 { margin-bottom: 1.5rem; }
+    .hero .lead { color: rgba(255,255,255,0.9); margin-bottom: 2rem; }
+    .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+
+    /* Stats Card */
+    .stats-card { background: white; border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow-lg); color: var(--ink); }
+    .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+    .stat { text-align: center; }
+    .stat-number { font-size: 2rem; font-weight: 900; color: var(--green); display: block; }
+    .stat-label { color: var(--muted); font-size: 0.9rem; }
+
+    /* Member Counter */
+    .member-counter { background: rgba(255,255,255,0.1); border-radius: var(--radius); padding: 1rem; margin-top: 1rem; backdrop-filter: blur(10px); }
+    .counter-bar { background: rgba(255,255,255,0.2); height: 8px; border-radius: 50px; overflow: hidden; margin: 1rem 0; }
+    .counter-progress { background: white; height: 100%; border-radius: 50px; width: 35%; animation: grow 2s ease-out; }
+    @keyframes grow { from { width: 0; } }
+
+    /* About */
+    .about-federation { background: white; }
+    .federation-map { background: var(--bg); border-radius: var(--radius); padding: 2rem; margin: 2rem 0; text-align: center; }
+    .map-placeholder {
+      background: linear-gradient(135deg, #f0f0f0, #e0e0e0); height: 400px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--muted); position: relative; overflow: hidden;
+    }
+    .countries-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .country-card { background: white; padding: 1rem; border-radius: var(--radius); text-align: center; transition: all 0.3s ease; cursor: pointer; }
+    .country-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .country-flag { font-size: 2rem; margin-bottom: 0.5rem; }
+
+    /* Why Now */
+    .why-now { background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%); }
+    .reasons-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .reason-card { background: white; padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); transition: all 0.3s ease; }
+    .reason-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .reason-icon { width: 60px; height: 60px; background: var(--green); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
+
+    /* Timeline (Roadmap) */
+    .timeline { position: relative; padding: 2rem 0; }
+    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--green); transform: translateX(-50%); }
+    .timeline-item { display: flex; justify-content: center; margin-bottom: 3rem; position: relative; }
+    .timeline-item:nth-child(odd) .timeline-content { margin-right: auto; margin-left: 0; }
+    .timeline-item:nth-child(even) .timeline-content { margin-left: auto; margin-right: 0; }
+    .timeline-content { background: white; padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow); max-width: 45%; position: relative; }
+    .timeline-date { position: absolute; top: 50%; transform: translateY(-50%); background: var(--green); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-weight: 600; }
+    .timeline-item:nth-child(odd) .timeline-date { right: -100px; }
+    .timeline-item:nth-child(even) .timeline-date { left: -100px; }
+
     /* Get Involved */
-    .list{display:grid;gap:.5rem;margin-top:.5rem}
-    .icon{font-size:1.1rem;margin-right:.4rem}
+    .get-involved { background: white; }
+    .involvement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .involvement-card { background: var(--bg); padding: 2rem; border-radius: var(--radius); text-align: center; transition: all 0.3s ease; border: 2px solid transparent; }
+    .involvement-card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .involvement-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+    /* Benefits */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .benefit-item { display: flex; align-items: start; gap: 1rem; }
+    .benefit-check { width: 24px; height: 24px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; margin-top: 0.25rem; }
+
+    /* FAQ */
+    .faq { background: var(--bg); }
+    .faq-grid { display: grid; gap: 1rem; margin-top: 2rem; }
+    .faq-item { background: white; border-radius: var(--radius); overflow: hidden; }
+    .faq-question { padding: 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s ease; }
+    .faq-question:hover { background: var(--bg); }
+    .faq-arrow { transition: transform 0.3s ease; }
+    .faq-item.active .faq-arrow { transform: rotate(180deg); }
+    .faq-answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: all 0.3s ease; }
+    .faq-item.active .faq-answer { padding: 0 1.5rem 1.5rem; max-height: 500px; }
+
+    /* Contact */
+    .contact { background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%); color: white; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+    .contact-form { background: white; padding: 2rem; border-radius: var(--radius); color: var(--ink); }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 0.75rem; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: border-color 0.3s ease;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--green); }
+    .contact-info h3 { margin-bottom: 2rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .contact-icon {
+      width: 48px; height: 48px; background: rgba(255,255,255,0.2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+
     /* Footer */
-    footer{background:#0f5a26;color:#cfe8d1;margin-top:2rem}
-    .foot{max-width:1120px;margin:0 auto;padding:1.5rem 1rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center}
-    .socials{display:flex;gap:.75rem;align-items:center}
-    .socials a{display:inline-flex;align-items:center;gap:.35rem;padding:.45rem .7rem;border-radius:999px;background:rgba(255,255,255,.1);color:#fff}
-    /* Forms */
-    form{display:grid;grid-template-columns:1fr auto;gap:.6rem}
-    input[type="email"],input[type="text"],textarea{width:100%;padding:.8rem;border-radius:10px;border:1px solid #d3dbe3;font:inherit}
-    textarea{min-height:110px;resize:vertical}
+    footer { background: var(--ink); color: white; padding: 3rem 0 1rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    .footer-section h4 { margin-bottom: 1rem; }
+    .footer-section a { color: var(--light); text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.3s ease; }
+    .footer-section a:hover { color: white; }
+    .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+    .social-link {
+      width: 40px; height: 40px; background: rgba(255,255,255,0.1);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.3s ease;
+    }
+    .social-link:hover { background: var(--green); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem; text-align: center; color: var(--light); }
+
+    /* Language switcher (styles already present; markup optional) */
+    .language-switcher {
+      position: fixed; bottom: 2rem; right: 2rem; background: white; border-radius: 50px;
+      box-shadow: var(--shadow-lg); padding: 0.5rem; display: flex; gap: 0.5rem; z-index: 999;
+    }
+    .lang-btn { padding: 0.5rem 1rem; border: none; background: none; border-radius: 50px; cursor: pointer; transition: background 0.3s ease; }
+    .lang-btn.active, .lang-btn:hover { background: var(--green); color: white; }
+
     /* Responsive */
-    @media (max-width: 900px){
-      .hero-wrap{grid-template-columns:1fr}
-      .cards{grid-template-columns:1fr}
-      .timeline{grid-template-columns:1fr; }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; right: 0; background: white;
+        flex-direction: column; padding: 1rem; box-shadow: var(--shadow);
+      }
+      .nav-links.active { display: flex; }
+      .nav-toggle { display: block; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline::before { left: 20px; }
+      .timeline-content { max-width: calc(100% - 60px); margin-left: 60px !important; }
+      .timeline-date { left: -10px !important; right: auto !important; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .social-links { justify-content: center; }
     }
-    @media (max-width: 480px){
-      .btn{padding:.7rem .9rem}
+
+    /* Animations */
+    .fade-in { animation: fadeIn 0.8s ease-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .slide-in-left { animation: slideInLeft 0.8s ease-out; }
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
+    .slide-in-right { animation: slideInRight 0.8s ease-out; }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
+
+    /* CTA pulse */
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(46, 125, 50, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
     }
-    /* Chat widget + avatar */
-#yefAvatar{
-  position: fixed;
-  right: 18px; bottom: 18px;
-  width: 64px; height: 64px;
-  border-radius: 50%;
-  border: none; background:#fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,.18);
-  padding: 6px; cursor: pointer; z-index: 9999;
-}
-#yefAvatar img{ width:100%; height:100%; border-radius:50% }
-#chatWidgetRoot{ position: fixed; right: 18px; bottom: 96px; width: min(420px,92vw); max-height: 70vh; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.25); display: none; z-index: 9998; }
-#chatWidgetRoot.open{ display: block }
-.yef-chat-panel{background:#fff;display:grid;grid-template-rows:auto 1fr auto;width:100%;height:min(70vh,520px)}
-.yef-chat-header{background:#0f5a26;color:#fff;padding:.6rem 1rem;font-weight:700}
-.yef-chat-messages{padding:.75rem;overflow:auto;background:#f7faf8}
-.yef-msg{max-width:85%;margin:.4rem 0;padding:.6rem .75rem;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
-.yef-assistant{background:#ffffff;border:1px solid #e6eef2}
-.yef-user{background:#1976D2;color:#fff;margin-left:auto}
-.yef-chat-inputrow{display:grid;grid-template-columns:1fr auto;gap:.5rem;padding:.6rem;border-top:1px solid #e6eef2;background:#fff}
-#yefInput{padding:.7rem;border-radius:10px;border:1px solid #cfd8e3}
-#yefSend{padding:.7rem 1rem;border-radius:10px;border:none;background:#1976D2;color:#fff;font-weight:600;cursor:pointer}
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="brand">
-        <img src="assets/images/yef-logo.png" alt="YEF logo">
-        <div class="name">Youth for East African Federation</div>
+  <!-- Header -->
+  <header id="header">
+    <nav class="container">
+      <a href="#home" class="brand">
+        <div class="logo">YEF</div>
+        <div class="brand-text">Youth for East African Federation</div>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About Federation</a>
+        <a href="#why-now">Why Now</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#get-involved">Get Involved</a>
+        <a href="#resources">Resources</a>
+        <a href="#contact" class="btn btn-primary">Join Movement</a>
       </div>
-      <div class="nav-links">
-        <a href="#why" style="color:#fff">Why Federation</a>
-        <a href="#plan" style="color:#fff">The Plan</a>
-        <a href="#engage" style="color:#fff">Get Involved</a>
-        <a href="#contact" class="btn btn-outline">Contact</a>
-      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-wrap">
-      <div>
-        <span class="tag">New youth movement launching 2025</span>
-        <h1>Why an East African Federation?</h1>
-        <p class="subtitle">Learn the case for deeper regional integration — mobility, markets, and shared prosperity — and how youth can drive it.</p>
-        <div class="cta">
-          <a class="btn" href="#engage">Become a Founding Member</a>
-          <a class="btn" style="background:var(--orange)" href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">Follow us on TikTok</a>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-grid">
+          <div class="slide-in-left">
+            <span class="badge">🚀 Launching 2025 - Be a Founding Member</span>
+            <h1>Unite 300+ Million East Africans</h1>
+            <p class="lead">Join the youth movement advocating for the East African Federation - a future of free movement, shared prosperity, and unlimited opportunities across seven nations.</p>
+            <div class="cta-group">
+              <a href="#get-involved" class="btn btn-primary btn-large pulse">Become a Founding Member</a>
+              <a href="#about" class="btn btn-secondary btn-large">Learn About Federation</a>
+            </div>
+            <div class="member-counter">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <span>🔥 <strong>3,247</strong> youth already joined</span>
+                <span>Goal: 10,000</span>
+              </div>
+              <div class="counter-bar"><div class="counter-progress"></div></div>
+              <small>Join now to secure founding member benefits</small>
+            </div>
+          </div>
+          <div class="stats-card fade-in">
+            <h3>The Opportunity</h3>
+            <div class="stats-grid">
+              <div class="stat"><span class="stat-number">7</span><span class="stat-label">Nations United</span></div>
+              <div class="stat"><span class="stat-number">300M+</span><span class="stat-label">People Connected</span></div>
+              <div class="stat"><span class="stat-number">$350B</span><span class="stat-label">Combined GDP</span></div>
+              <div class="stat"><span class="stat-number">60%</span><span class="stat-label">Under Age 25</span></div>
+            </div>
+            <div style="margin-top:1.5rem;text-align:center;">
+              <small style="color:var(--muted);">Sources: EAC Statistics 2024</small>
+            </div>
+          </div>
         </div>
       </div>
-      </div></section>
-
-  <!-- WHY -->
-  <section id="why">
-    <h2 class="section-title">Why East African Federation?</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>🌍 Mobility</h3>
-        <p class="muted">Easier movement for study, work, and entrepreneurship across member states.</p>
-      </div>
-      <div class="card">
-        <h3>🤝 Unity</h3>
-        <p class="muted">Stronger collective identity and collaboration beyond colonial borders.</p>
-      </div>
-      <div class="card">
-        <h3>📈 Opportunity</h3>
-        <p class="muted">Bigger markets, shared infrastructure, and youth-led innovation.</p>
-      </div>
-    </div>
-    <p class="muted" style="margin-top:1rem">We will focus on practical, youth-led projects that demonstrate the benefits of deeper regional integration while acknowledging the real policy and coordination barriers that exist today.</p>
-  </section>
-
-  <!-- THE PLAN -->
-  <section id="plan">
-    <h2 class="section-title">Our Approach</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Programs</h3>
-        <ul class="list">
-          <li>• Starting Q2 2025: Monthly online discussions for members.</li>
-          <li>• City meetups and campus events to grow local chapters.</li>
-          <li>• Cross-border student & founder roundtables.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Advocacy</h3>
-        <ul class="list">
-          <li>• Storytelling and data-driven explainers about federation benefits.</li>
-          <li>• Partnerships with youth orgs and innovation hubs.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>Build-in-Public</h3>
-        <ul class="list">
-          <li>• Share progress transparently and invite feedback.</li>
-          <li>• Pilot simple projects that reduce friction across borders.</li>
-        </ul>
-      </div>
     </div>
   </section>
 
-  
-  <!-- WHY (kept) -->
+  <!-- About Federation -->
+  <section class="about-federation" id="about">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <h2>What is the East African Federation?</h2>
+        <p class="lead">A proposed political union transforming the East African Community into a single sovereign state</p>
+      </div>
 
-  <!-- WHAT WE'RE PUSHING FOR -->
-  <section id="push">
-    <h2 class="section-title">What We’re Advocating For</h2>
-    <div class="cards">
-      <div class="card"><h3>Free(er) Mobility</h3><p class="muted">Simpler movement for study, work, and entrepreneurship across the region.</p></div>
-      <div class="card"><h3>Common Market</h3><p class="muted">Reduced friction for youth-led businesses to sell across borders.</p></div>
-      <div class="card"><h3>Youth Voice in Policy</h3><p class="muted">Constructive, evidence-based input into integration policies that affect young people.</p></div>
-    </div>
-  </section>
-
-  <!-- HOW TO ENGAGE -->
-  <section id="engage">
-    <h2 class="section-title">How to Engage</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Learn & Share</h3>
-        <p class="muted">Use our explainers to educate friends and peers. Start conversations on campus and online.</p>
-        <div class="socials" style="margin-top:.5rem">
-          <a href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">🎵 TikTok</a>
+      <div class="federation-map">
+        <h3>Member States</h3>
+        <div class="map-placeholder">🗺️ Interactive Map Coming Soon</div>
+        <div class="countries-grid">
+          <div class="country-card"><div class="country-flag">🇰🇪</div><strong>Kenya</strong><small>54M people</small></div>
+          <div class="country-card"><div class="country-flag">🇹🇿</div><strong>Tanzania</strong><small>61M people</small></div>
+          <div class="country-card"><div class="country-flag">🇺🇬</div><strong>Uganda</strong><small>47M people</small></div>
+          <div class="country-card"><div class="country-flag">🇷🇼</div><strong>Rwanda</strong><small>13M people</small></div>
+          <div class="country-card"><div class="country-flag">🇧🇮</div><strong>Burundi</strong><small>12M people</small></div>
+          <div class="country-card"><div class="country-flag">🇸🇸</div><strong>South Sudan</strong><small>11M people</small></div>
+          <div class="country-card"><div class="country-flag">🇨🇩</div><strong>DR Congo</strong><small>95M people</small></div>
         </div>
       </div>
-      <div class="card">
-        <h3>Suggest Ideas</h3>
-        <p class="muted">Tell us what resources or events would help you make the case for federation.</p>
-        <form action="https://formspree.io/f/YOURENGAGEID" method="POST">
-          <input type="text" name="name" placeholder="Your name">
-          <input type="email" name="email" placeholder="Email" required>
-          <textarea name="message" placeholder="Your suggestion"></textarea>
-          <button class="btn" type="submit">Send</button>
-        </form>
-        <p class="muted" style="margin-top:.5rem;font-size:.9rem">Replace <code>YOURENGAGEID</code> with your Formspree form ID.</p>
+
+      <div style="margin-top:3rem;">
+        <h3>Federation vs Current EAC</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;">
+          <div style="background:var(--bg);padding:1.5rem;border-radius:var(--radius);">
+            <h4>Current EAC (Today)</h4>
+            <ul style="margin-top:1rem;list-style: none;">
+              <li>• Customs union and common market (partial)</li>
+              <li>• Separate national currencies, armies, and laws</li>
+              <li>• Barriers to free movement still exist</li>
+              <li>• Coordination through EAC organs</li>
+            </ul>
+          </div>
+          <div style="background:var(--bg);padding:1.5rem;border-radius:var(--radius);">
+            <h4>Proposed Federation</h4>
+            <ul style="margin-top:1rem;list-style: none;">
+              <li>• Single sovereign state with federal institutions</li>
+              <li>• Unified market, mobility, and external policy</li>
+              <li>• Common currency & defense structures (phased)</li>
+              <li>• Youth-driven integration and innovation</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2 class="section-title">Contact</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Say Hello</h3>
-        <form action="https://formspree.io/f/mrblraee" method="POST">
-          <input type="text" name="name" placeholder="Your name">
-          <input type="email" name="email" placeholder="Email" required>
-          <textarea name="message" placeholder="Your message"></textarea>
-          <button class="btn" type="submit">Send</button>
-        </form>
-        <p class="muted" style="margin-top:.5rem;font-size:.9rem">Replace <code>YOURCONTACTID</code> with your Formspree form ID.</p>
+  <!-- Why Now -->
+  <section class="why-now" id="why-now">
+    <div class="container">
+      <h2>Why Now?</h2>
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-icon">📊</div>
+          <h3>Economic Scale</h3>
+          <p>Unlock a larger single market to accelerate trade, manufacturing, and investment across the region.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">🧭</div>
+          <h3>Mobility & Opportunity</h3>
+          <p>Seamless movement for study, work, and business—empowering youth to build careers anywhere in the region.</p>
+        </div>
+        <div class="reason-card">
+          <div class="reason-icon">🕊️</div>
+          <h3>Peace & Stability</h3>
+          <p>Stronger common institutions for security, dispute resolution, and coordinated development.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  
+  <!-- Roadmap -->
+  <section id="roadmap">
+    <div class="container">
+      <h2>Roadmap to Launch</h2>
+      <div class="timeline" style="margin-top:2rem;">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Phase 1: Awareness</h3>
+            <p>Build a youth coalition, publish explainers, and host campus dialogues.</p>
+            <span class="timeline-date">2025 Q1</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Phase 2: Chapters</h3>
+            <p>Launch city and campus chapters; coordinate regional events.</p>
+            <span class="timeline-date">2025 Q2</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Phase 3: Policy Voice</h3>
+            <p>Publish a youth position paper and present it to EAC stakeholders.</p>
+            <span class="timeline-date">2025 Q3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Get Involved -->
+  <section class="get-involved" id="get-involved">
+    <div class="container">
+      <h2>Get Involved</h2>
+      <div class="involvement-grid">
+        <div class="involvement-card">
+          <div class="involvement-icon">🧑‍🤝‍🧑</div>
+          <h3>Become a Founding Member</h3>
+          <p>Join the first 10,000 to shape our culture, roadmap, and launch activities.</p>
+          <p style="margin-top:1rem;"><a class="btn btn-primary" href="#contact">Join Now</a></p>
+        </div>
+        <div class="involvement-card">
+          <div class="involvement-icon">🎓</div>
+          <h3>Start a Campus Chapter</h3>
+          <p>Organize meetups, debates, and community projects at your university.</p>
+          <p style="margin-top:1rem;"><a class="btn btn-secondary" href="#contact">Request Toolkit</a></p>
+        </div>
+        <div class="involvement-card">
+          <div class="involvement-icon">📣</div>
+          <h3>Volunteer & Ambassador</h3>
+          <p>Help with events, content, partnerships, or chapter coordination.</p>
+          <p style="margin-top:1rem;"><a class="btn btn-secondary" href="#contact">Raise Your Hand</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section id="resources">
+    <div class="container">
+      <h2>Resources</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item"><div class="benefit-check">✓</div><div><strong>Federation 101:</strong> Plain-language overview of concepts and terms.</div></div>
+        <div class="benefit-item"><div class="benefit-check">✓</div><div><strong>Comparisons:</strong> Lessons from other federations and unions.</div></div>
+        <div class="benefit-item"><div class="benefit-check">✓</div><div><strong>Myth-Busting:</strong> Address common concerns with facts.</div></div>
+        <div class="benefit-item"><div class="benefit-check">✓</div><div><strong>Documents:</strong> EAC treaties, drafts, and position papers (coming soon).</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-question">What is the East African Federation? <span class="faq-arrow">⌄</span></div>
+          <div class="faq-answer"><p>A proposed political union of EAC member states with shared institutions and deeper integration.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">How can I help right now? <span class="faq-arrow">⌄</span></div>
+          <div class="faq-answer"><p>Join as a founding member, start a campus chapter, or volunteer for outreach and events.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-form">
+          <form action="https://formspree.io/f/mrblraee" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Your message" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Send</button>
+          </form>
+        </div>
+        <div class="contact-info">
+          <h3>Stay Connected</h3>
+          <div class="contact-item">
+            <div class="contact-icon">🎵</div>
+            <div><strong>TikTok</strong><br><a style="color:#fff;text-decoration:underline" href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">tiktok.com/@youthforeastafric</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>We’ll reply to your message within 48 hours.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <div class="foot">
-      <div>© <span id="y"></span> Youth for East African Federation — Be part of building this movement from day one.</div>
-      <div class="socials">
-        <a href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener">🎵 TikTok</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h4>Youth for East African Federation</h4>
+          <p>Together we’re building a united, prosperous future across East Africa.</p>
+          <div class="social-links" style="margin-top:1rem;">
+            <a class="social-link" href="https://www.tiktok.com/@youthforeastafric" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Explore</h4>
+          <a href="#about">About Federation</a>
+          <a href="#why-now">Why Now</a>
+          <a href="#roadmap">Roadmap</a>
+        </div>
+        <div class="footer-section">
+          <h4>Get Involved</h4>
+          <a href="#get-involved">Join as Member</a>
+          <a href="#contact">Start a Chapter</a>
+          <a href="#contact">Volunteer</a>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <a href="#resources">Guides</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
+      <div class="footer-bottom">© <span id="year"></span> Youth for East African Federation</div>
     </div>
   </footer>
 
-  <!-- Avatar trigger -->
-<button id="yefAvatar" aria-label="Open YEF chat">
-  <img src="assets/images/yef-logo.png" alt="YEF chat avatar">
-</button>
-
-<!-- Existing Chatbot (kept) -->
-  <div id="chatWidgetRoot" aria-live="polite">
-  <div class="yef-chat-panel">
-    <div class="yef-chat-header">YEF Assistant</div>
-    <div class="yef-chat-messages" id="yefMsgs">
-      <div class="yef-msg yef-assistant">Hello! Karibu. Ask me anything about East African Federation.</div>
-    </div>
-    <div class="yef-chat-inputrow">
-      <input id="yefInput" type="text" placeholder="Type your message…" aria-label="Chat message input">
-      <button id="yefSend" aria-label="Send">Send</button>
-    </div>
-  </div>
-</div>
-  <script src="assets/js/chat.js"></script>
+  <!-- Minimal JS (menu, header, faq, year) -->
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // Mobile menu toggle
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle?.addEventListener('click', () => navLinks.classList.toggle('active'));
+    navLinks?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
+
+    // Sticky header shadow on scroll
+    const header = document.getElementById('header');
+    const setHeaderShadow = () => header.classList.toggle('scrolled', window.scrollY > 4);
+    window.addEventListener('scroll', setHeaderShadow);
+    setHeaderShadow();
+
+    // FAQ toggles
+    document.querySelectorAll('.faq-item .faq-question').forEach(q => {
+      q.addEventListener('click', () => q.parentElement.classList.toggle('active'));
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
