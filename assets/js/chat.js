@@ -105,3 +105,47 @@ async function yefSendToServer(messages){
 if (typeof window !== 'undefined') {
   window.yefSendToServer = yefSendToServer;
 }
+
+// ensured avatar wiring and message send added
+
+document.addEventListener('DOMContentLoaded', function(){
+  const root = document.getElementById('chatWidgetRoot');
+  const avatar = document.getElementById('yefAvatar');
+  const input = document.getElementById('yefInput');
+  const sendBtn = document.getElementById('yefSend');
+  const msgs = document.getElementById('yefMsgs');
+
+  function appendMsg(text, who){
+    const div = document.createElement('div');
+    div.className = 'yef-msg ' + (who === 'user' ? 'yef-user' : 'yef-assistant');
+    div.textContent = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  async function sendMessage(){
+    const text = (input?.value || '').trim();
+    if (!text) return;
+    appendMsg(text, 'user');
+    input.value = '';
+    try {
+      const reply = (window.yefSendToServer ? await window.yefSendToServer([{role:'user', content: text}]) : '(server not ready)');
+      appendMsg(reply || '(no reply)', 'assistant');
+    } catch (e) {
+      appendMsg('(error contacting server)', 'assistant');
+    }
+  }
+
+  if (sendBtn) sendBtn.addEventListener('click', sendMessage);
+  if (input) input.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  // Ensure avatar toggles root even if earlier init didn't run
+  if (avatar) {
+    avatar.addEventListener('click', () => {
+      root.classList.toggle('open');
+      if (root.classList.contains('open')) input?.focus();
+    }, { capture: false });
+  }
+});

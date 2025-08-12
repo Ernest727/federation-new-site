@@ -97,6 +97,15 @@
 #yefAvatar img{ width:100%; height:100%; border-radius:50% }
 #chatWidgetRoot{ position: fixed; right: 18px; bottom: 96px; width: min(420px,92vw); max-height: 70vh; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.25); display: none; z-index: 9998; }
 #chatWidgetRoot.open{ display: block }
+.yef-chat-panel{background:#fff;display:grid;grid-template-rows:auto 1fr auto;width:100%;height:min(70vh,520px)}
+.yef-chat-header{background:#0f5a26;color:#fff;padding:.6rem 1rem;font-weight:700}
+.yef-chat-messages{padding:.75rem;overflow:auto;background:#f7faf8}
+.yef-msg{max-width:85%;margin:.4rem 0;padding:.6rem .75rem;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.yef-assistant{background:#ffffff;border:1px solid #e6eef2}
+.yef-user{background:#1976D2;color:#fff;margin-left:auto}
+.yef-chat-inputrow{display:grid;grid-template-columns:1fr auto;gap:.5rem;padding:.6rem;border-top:1px solid #e6eef2;background:#fff}
+#yefInput{padding:.7rem;border-radius:10px;border:1px solid #cfd8e3}
+#yefSend{padding:.7rem 1rem;border-radius:10px;border:none;background:#1976D2;color:#fff;font-weight:600;cursor:pointer}
   </style>
 </head>
 <body>
@@ -265,7 +274,18 @@
 </button>
 
 <!-- Existing Chatbot (kept) -->
-  <div id="chatWidgetRoot"></div>
+  <div id="chatWidgetRoot" aria-live="polite">
+  <div class="yef-chat-panel">
+    <div class="yef-chat-header">YEF Assistant</div>
+    <div class="yef-chat-messages" id="yefMsgs">
+      <div class="yef-msg yef-assistant">Hello! Karibu. Ask me anything about East African Federation.</div>
+    </div>
+    <div class="yef-chat-inputrow">
+      <input id="yefInput" type="text" placeholder="Type your message…" aria-label="Chat message input">
+      <button id="yefSend" aria-label="Send">Send</button>
+    </div>
+  </div>
+</div>
   <script src="assets/js/chat.js"></script>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
